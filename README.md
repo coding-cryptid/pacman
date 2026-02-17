@@ -1,2 +1,2 @@
-# pacman
-Pacman! Made following tutorial by Kenny Yip Coding.
+# Pacman
+👾 Pacman! Made following tutorial by Kenny Yip Coding.
