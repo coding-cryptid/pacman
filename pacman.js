@@ -30,28 +30,28 @@ window.onload = function() {
 
 function loadImages() {
     wallImage = new Image();
-    wallImage.src = "./wall.png";
+    wallImage.src = "./images/wall.png";
 
     blueGhostImage = new Image();
     blueGhostImage.src = "./images/blueGhost.png";
 
     redGhostImage = new Image();
-    redGhostImage.src = "./redGhost.png";
+    redGhostImage.src = "./images/redGhost.png";
 
     pinkGhostImage = new Image();
     pinkGhostImage.src = "./images/pinkGhost.png";
 
     orangeGhostImage = new Image();
-    orangeGhostImage.src = "./orangeGhost.png";
+    orangeGhostImage.src = "./images/orangeGhost.png";
 
     pacmanUpImage = new Image();
     pacmanUpImage.src = "./images/pacmanUp.png";
 
     pacmanDownImage = new Image();
-    pacmanDownImage.src = "./pacmanDown.png";
+    pacmanDownImage.src = "./images/pacmanDown.png";
 
     pacmanLeftImage = new Image();
-    pacmanLeftImage.src = "./imagespacmanLeft.png";
+    pacmanLeftImage.src = "./images/pacmanLeft.png";
 
     pacmanRightImage = new Image();
     pacmanRightImage.src = "./images/pacmanRight.png";
