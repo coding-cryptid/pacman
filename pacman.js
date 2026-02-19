@@ -132,7 +132,7 @@ function loadMap() {
                 foods.add(food);
             }
             else if (tileMapChar === "3") {
-                const power = new Block(powerPellet, x + 12, y + 12, 6, 6);
+                const power = new Block(powerPellet, x + 10, y + 10, 8, 8);
                 pellets.add(power);
             }
         }
