@@ -17,6 +17,7 @@ let pacmanDownImage;
 let pacmanLeftImage;
 let pacmanRightImage;
 let wallImage;
+let powerPellet;
 
 //load functions
 window.onload = function() {
@@ -62,7 +63,7 @@ function loadImages() {
 const tileMap = [
     "XXXXXXXXXXXXXXXXXXX",
     "X        X        X",
-    "X XX XXX X XXX XX X",
+    "X3XX XXX X XXX XX3X",
     "X                 X",
     "X XX X XXXXX X XX X",
     "X    X       X    X",
@@ -78,19 +79,21 @@ const tileMap = [
     "X  X     P     X  X",
     "XX X X XXXXX X X XX",
     "X    X   X   X    X",
-    "X XXXXXX X XXXXXX X",
+    "X3XXXXXX X XXXXXX3X",
     "X                 X",
     "XXXXXXXXXXXXXXXXXXX" 
 ];
 
 const walls = new Set();
 const foods = new Set();
+const pellets = new Set();
 const ghosts = new Set();
 let pacman;
 
 function loadMap() {
     walls.clear();
     foods.clear();
+    pellets.clear();
     ghosts.clear();
 
     for (let r = 0; r < rowCount; r++) {
@@ -128,6 +131,10 @@ function loadMap() {
                 const food = new Block(null, x + 14, y + 14, 4, 4);
                 foods.add(food);
             }
+            else if (tileMapChar === "3") {
+                const power = new Block(powerPellet, x + 12, y + 12, 6, 6);
+                pellets.add(power);
+            }
         }
     }
 }
@@ -139,7 +146,20 @@ function update() {
 
 function draw() {
     context.drawImage(pacman.image, pacman.x, pacman.y, pacman.width, pacman.height);
-    
+    for (let ghost of ghosts.values()) {
+        context.drawImage(ghost.image, ghost.x, ghost.y, ghost.width, ghost.height);
+    }
+    for (let wall of walls.values()) {
+        context.drawImage(wall.image, wall.x, wall.y, wall.width, wall.height);
+    }
+    context.fillStyle = "white";
+    for (let food of foods.values()) {
+        context.fillRect(food.x, food.y, food.width, food.height);
+    }
+    context.fillStyle = "white";
+    for (let power of pellets.values()) {
+        context.fillRect(power.x, power.y, power.width, power.height);
+    }
 }
 
 class Block {
