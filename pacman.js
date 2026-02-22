@@ -30,7 +30,7 @@ window.onload = function() {
     loadMap();
     update();
     document.addEventListener("keyup", movePacman);
-    
+
 }
 
 function loadImages() {
@@ -164,6 +164,21 @@ function draw() {
     }
 }
 
+function movePacman(e) {
+    if (e.code == "ArrowUp" || e.code == "KeyW") {
+        pacman.updateDirection("U")
+    }
+    else if (e.code == "ArrowDown" || e.code == "KeyS") {
+        pacman.updateDirection("D")
+    }
+    else if (e.code == "ArrowLeft" || e.code == "KeyA") {
+        pacman.updateDirection("L")
+    }
+    else if (e.code == "ArrowRight" || e.code == "KeyD") {
+        pacman.updateDirection("R")
+    }
+}
+
 class Block {
     constructor(image, x, y, width, height) {
         this.image = image;
@@ -190,17 +205,14 @@ class Block {
             this.velocityX = 0;
             this.velocityY = -tileSize/4;
         }
-
         else if(this.direction == 'D') {
             this.velocityX = 0;
             this.velocityY = tileSize/4;
         }
-
         else if(this.direction == 'L') {
             this.velocityX = -tileSize/4;
             this.velocityY = 0;
         }
-
         else if(this.direction == 'L') {
             this.velocityX = tileSize/4;
             this.velocityY = 0;
