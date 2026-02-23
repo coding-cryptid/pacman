@@ -142,6 +142,7 @@ function loadMap() {
 }
 
 function update() {
+    move();
     draw();
     setTimeout(update, 50);
 }
@@ -162,6 +163,11 @@ function draw() {
     for (let power of pellets.values()) {
         context.fillRect(power.x, power.y, power.width, power.height);
     }
+}
+
+function move() {
+    pacman.x += pacman.velocityX;
+    pacman.y += pacman.velocityY;
 }
 
 function movePacman(e) {
