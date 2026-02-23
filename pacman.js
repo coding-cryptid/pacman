@@ -218,8 +218,21 @@ class Block {
     }
 
     updateDirection(direction) {
+        const prevDirection = this.direction;
         this.direction = direction;
         this.updateVelocity();
+        this.x += this.velocityX;
+        this.y += this.velocityY;
+
+        for (let wall of walls.values()) {
+            if (collision(this, wall)) {
+                this.x -= this.velocityX;
+                this.y -= this.velocityY;
+                this.direction = prevDirection;
+                this.updateVelocity();
+                return;
+            }
+        }
     }
 
     updateVelocity() {
