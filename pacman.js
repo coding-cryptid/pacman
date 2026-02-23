@@ -192,6 +192,19 @@ function movePacman(e) {
     else if (e.code == "ArrowRight" || e.code == "KeyD") {
         pacman.updateDirection("R");
     }
+
+    if (pacman.direction == "U") {
+        pacman.image = pacmanUpImage;
+    }
+    else if (pacman.direction == "D") {
+        pacman.image = pacmanDownImage;
+    } 
+    else if (pacman.direction == "L") {
+        pacman.image = pacmanLeftImage;
+    }
+    else if (pacman.direction == "R") {
+        pacman.image = pacmanRightImage;
+    }
 }
 
 function collision(a, b) {
