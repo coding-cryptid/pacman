@@ -49,7 +49,7 @@ const pellets = new Set();
 const ghosts = new Set();
 let pacman;
 
-const direction = ['U', 'D', 'L', 'R']
+const directions = ['U', 'D', 'L', 'R']
 
 //load functions
 window.onload = function() {
@@ -60,6 +60,10 @@ window.onload = function() {
 
     loadImages();
     loadMap();
+    for (let ghost of ghosts.values()) {
+        const newDirection = directions[Math.floor(Math.random() * 4)];
+        ghost.updateDirection(newDirection);
+    }
     update();
     document.addEventListener("keyup", movePacman);
 
@@ -177,6 +181,20 @@ function move() {
             pacman.x -= pacman.velocityX;
             pacman.y -= pacman.velocityY;
             break;
+        }
+    }
+
+    for (let ghost of ghosts.values()) {
+        ghost.x += ghost.velocityX;
+        ghost.y += ghost.velocityY;
+        for (let wall of walls.values()) {
+            if (collision(ghost, wall)) {
+                ghost.x -= ghost.velocityX;
+                ghost.y -= ghost.velocityY;
+                const newDirection = directions[Math.floor(Math.random() * 4)];
+                ghost.updateDirection(newDirection);
+                break;
+            }
         }
     }
 }
